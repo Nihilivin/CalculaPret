@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Calculaprêt &mdash; {% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="keyword" content=""/>
+        <meta name="description" content=""/>
+
+
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,800' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Dosis:800' rel='stylesheet' type='text/css'>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        {% stylesheets '@AppBundle/Resources/public/less/comon.less'
+        filter='less'
+        output='css/comon.css' %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen" type="text/css" />
+        {% endstylesheets %}
+        {% block stylesheets %}{% endblock %}
+
+        {% javascripts '@AppBundle/Resources/public/js/ithoughts-toolbox.js' %}
+        <script src="{{ asset_url }}" defer></script>
+        {% endjavascripts %}
+        {% block js_defer %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <h1 class="logo"><span>Calcula</span><span>Pr&ecirc;t</span></h1>
+            <nav id="menu">{{ include('partials/nav.html.twig') }}</nav>
+        </header>
+        <section>
+            <div id="noflex">
+                <div class="center-absolute">
+                    <h2 class="error">Attention!</h2>
+                    <p>Ce site nécessite le module <em>FlexBox</em> pour être affiché correctement, mais votre navigateur semble ne pas le supporter. Veuillez utiliser un navigateur plus récent.</p>
+                    <p>Si votre navigateur est récent &amp; à jour, et que vous voyez ce message, <a href="">contactez nous</a>.</p>
+                </div>
+            </div>
+            {% block body %}{% endblock %}
+        </section>
+        {% block js %}{% endblock %}
+    </body>
+</html>

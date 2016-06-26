@@ -1,0 +1,230 @@
+{% extends 'BtoCCalcBundle::base.html.twig' %}
+
+{% block stylesheets %}
+{% stylesheets '@BtoCCalcBundle/Resources/public/less/calculator.less'
+filter='less'
+output='css/comon.css' %}
+<link href="{{ asset_url }}" rel="stylesheet" media="screen" type="text/css" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block js_defer %}
+{% javascripts
+'@BtoCCalcBundle/Resources/public/js/base_converter.js'
+'@BtoCCalcBundle/Resources/public/js/hash_handler.js'
+'@BtoCCalcBundle/Resources/public/js/calculator.js'
+'@BtoCCalcBundle/Resources/public/js/main_calc.js' %}
+<script src="{{ asset_url }}" defer></script>
+{% endjavascripts %}
+{% endblock %}
+
+{% block content %}
+<div id="basic_data">
+    <div id="calculator-padder">
+        <div id="calculator" class="calculator-data">
+            <div class="table">
+                <div class="table-row" id="amount-label">
+                    <div class="table-cell">
+                        <label for="amount-value">Montant</label>
+                    </div>
+                </div>
+                <div class="table-row" id="amount">
+                    <div class="table-cell">
+                        <div class="buttons-plus-minus-container" id="amount-buttons-plus-minus-container">
+                            <div class="buttons-plus-minus" id="amount-plus-minus">
+                                <button type="button" class="cbutton midheight repeatable" id="amount-plus">+</button>
+                                <button type="button" class="cbutton midheight repeatable" id="amount-minus">-</button>
+                            </div>
+                            <button type="button" class="cbutton button-padlock" id="amount-padlock"><i class="fa fa-lock"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-cell">
+                        <div class="table-row">
+                            <input type="text" class="cvalue table-cell" id ="amount-value"
+                                   placeholder="200 000" tabindex="1">
+                            <div class="table-cell">
+                                <label class="unit" for="amount-value">&#8364;</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-cell">
+                        <button type="button" class="cbutton" id="amount-button">GO</button>
+                    </div>
+                </div>
+                <div class="table-row" id="duration-label">
+                    <div class="table-cell">
+                        <label for="duration-value">Dur&eacute;e (ann&eacute;es)</label>
+                    </div>
+                </div>
+                <div class="table-row" id="duration">
+                    <div class="table-cell">
+                        <div class="buttons-plus-minus-container" id="duration-buttons-plus-minus-container">
+                            <div class="buttons-plus-minus" id="duration-plus-minus">
+                                <button type="button" class="cbutton midheight repeatable" id="duration-plus">+</button>
+                                <button type="button" class="cbutton midheight repeatable" id="duration-minus">-</button>
+                            </div>
+                            <button type="button" class="cbutton button-padlock" id="duration-padlock"><i class="fa fa-lock"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-cell">
+                        <div class="table-row">
+                            <input type="text" class="cvalue table-cell" id="duration-value"
+                                   placeholder="20" tabindex="2">
+                            <div class="table-cell">
+                                <label class="unit" for="duration-value">an(s)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-cell">
+                        <button type="button" class="cbutton" id="duration-button">GO</button>
+                    </div>
+                </div>
+                <div class="table-row" id="rate-label">
+                    <div class="table-cell">
+                        <label for="rate-value">Taux</label>
+                    </div>
+                </div>
+                <div class="table-row" id="rate">
+                    <div class="table-cell">
+                        <div class="buttons-plus-minus-container" id="rate-buttons-plus-minus-container">
+                            <div class="buttons-plus-minus" id="rate-plus-minus">
+                                <button type="button" class="cbutton midheight repeatable" id="rate-plus">+</button>
+                                <button type="button" class="cbutton midheight repeatable" id="rate-minus">-</button>
+                            </div>
+                            <button type="button" class="cbutton button-padlock" id="rate-padlock"><i class="fa fa-lock"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-cell">
+                        <div class="table-row">
+                            <input type="text" class="cvalue table-cell" id="rate-value"
+                                   placeholder="2,5" tabindex="3">
+                            <div class="table-cell">
+                                <label class="unit" for="rate-value">%</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-cell">
+                        <button type="button" class="cbutton" id="rate-button">GO</button>
+                    </div>
+                </div>
+                <div class="table-row" id="payment-label">
+                    <div class="table-cell">
+                        <label for="payment-value">Mensualit&eacute;</label>
+                    </div>
+                </div>
+                <div class="table-row" id="payment">
+                    <div class="table-cell">
+                        <div class="buttons-plus-minus-container" id="payment-buttons-plus-minus-container">
+                            <div class="buttons-plus-minus" id="payment-plus-minus">
+                                <button type="button" class="cbutton midheight repeatable" id="payment-plus">+</button>
+                                <button type="button" class="cbutton midheight repeatable" id="payment-minus">-</button>
+                            </div>
+                            <button type="button" class="cbutton button-padlock" id="payment-padlock"><i class="fa fa-lock"></i></button>
+                        </div>
+                    </div>
+                    <div class="table-cell">
+                        <div class="table-row">
+                            <input type="text" class="cvalue table-cell" id="payment-value"
+                                   placeholder="1 500" tabindex="4">
+                            <div class="table-cell">
+                                <label class="unit" for="payment-value">&#8364;</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-cell">
+                        <button type="button" class="cbutton" id="payment-button">GO</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="calculator-data"><p>Ajouter l'<span class="green-emphasis">assurance</span> ?</p></div>
+        <div class="calculator-data"><p>Ajouter des <span class="green-emphasis">co&ucirc;ts fixes</span> ?</p></div>
+    </div>
+    <div id="graph_1-padder">
+        <div id="graph_1">
+            <p id="refund">Remboursement total: <span class="selected-text nobreak"><span class="switch-text" id="refund_amount"><span>0</span></span> &euro;</span></p>
+
+            <div id="graph_1_head" class="top-lined line">
+                <div class="left">
+                    <p>dont capital remboursé: <span class="selected-text nobreak"><span class="switch-text" id="payback_amount"><span>0</span></span> &euro;</span></p>
+                    <div class="refund">
+                        <div class="graph-elem"></div>
+                        <div class="graph-elem-hover" id="graph-elem-hover-left"></div>
+                    </div>
+                </div>
+                <div class="right">
+                    <p>dont intérêts: <span class="selected-text nobreak"><span class="switch-text" id="interests_amount"><span>0</span></span> &euro;</span></p>
+                    <div class="interests">
+                        <div class="graph-elem"></div>
+                        <div class="graph-elem-hover" id="graph-elem-hover-right"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="line" id="graph_1-lineinfos-container">
+                <div id="graph_1-lineinfos">
+                    <p>Capital remboursé</p>
+                    <p>Intérêts payés</p>
+                </div>
+            </div>
+            <div class="line">
+                <div class="left"><span class="switch-text r_r" id="datestart"><span></span></span></div>
+                <div class="right"></div>
+            </div>
+            <div class="top-lined line" id="graph_1-scroll_area">
+                <div id="graph_1-scroll_bar">
+                    <div>
+                    </div>
+                    <div id="graph_1-scroll_line"></div>
+                    <div id="graph_1-scroll_cursor"></div>
+                </div>
+                <div id="graph_1-body_scroll">
+                    <div class="html-prototype graph_1-line line-{ type }" id="graph_1-{id}">
+                        <div class="date"><p>{ label }</p></div>
+                        <div class="payment"><p>{ payment }</p></div>
+                        <div class="refund">
+                            <div class="graph-elem"></div>
+                            <p>{ loan_paid }</p>
+                        </div>
+                        <div class="interests">
+                            <div class="graph-elem"></div>
+                            <p>{ interests_paid }</p>
+                        </div>
+                    </div>
+                    <div id="graph_1-body_scroll-container">
+                        <div id="graph_1-body_scroll-container-years">
+                        </div>
+                        <div id="graph_1-body_scroll-container-months">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-lined line" id="graph_1-foot">
+                <div><span class="switch-text r_r" id="dateend"><span></span></span></div>
+                <div>
+                    <div class="toggle" id="toggle-year_month">
+                        <input type="checkbox" name="toggle-year_month-input" id="toggle-year_month-input"/>
+                        <label for="toggle-year_month-input" class="toggle-label-left">Année</label>
+                        <label for="toggle-year_month-input" class="toggle-label-left">Mois</label>
+                    </div>
+                </div>
+            </div>
+            <div class="line" id="graph_1-space_eater">
+                <div class="left"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <div class="action-button">
+                {% image '@AppBundle/Resources/public/img/download.svg' %}
+                <img src="{{ asset_url }}" alt="Télécharger" title="Télécharger"/>
+                {% endimage %}
+            </div>
+            <div class="action-button">
+                {% image '@AppBundle/Resources/public/img/share.svg' %}
+                <img src="{{ asset_url }}" alt="Partager" title="Partager"/>
+                {% endimage %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

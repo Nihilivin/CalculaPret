@@ -1,0 +1,4 @@
+services:
+#    bto_c_calc.example:
+#        class: BtoCCalcBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

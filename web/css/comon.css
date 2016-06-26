@@ -1,0 +1,321 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-size: inherit;
+}
+html {
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+body > section {
+  flex: 1 1 auto;
+  display: flex;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #262626;
+  color: #bfbfbf;
+}
+header {
+  background-color: #000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+  padding: 0 15px;
+  flex: 0 0 auto;
+  align-items: center;
+}
+header #menu {
+  flex: 1 1 auto;
+  text-align: right;
+}
+header #menu a {
+  padding: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+  color: #00b050;
+  transition: 0.25s color;
+}
+a:visited {
+  color: #60b888;
+}
+a:active,
+a:hover {
+  color: #00d661;
+}
+p {
+  margin-bottom: 10px;
+}
+/*body:not([data-page="2"]) #page-2{
+.graph{
+width: 0!important;
+}
+}*/
+.sep {
+  border-right: 1px solid #333;
+}
+h1.logo {
+  font-size: 30px;
+  line-height: 32px;
+}
+.logo {
+  font-family: "Dosis";
+  font-weight: 800;
+  font-style: normal;
+}
+.logo *:first-child {
+  color: #ffc000;
+}
+.logo *:last-child {
+  color: #ffffff;
+}
+h2 {
+  font-size: 50px;
+}
+h2.error {
+  color: #c9492c;
+}
+/* for each line in the calculator box */
+.table {
+  display: table;
+}
+.table,
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-row {
+  display: table-row;
+  overflow: auto;
+  width: 100%;
+  margin: 5px;
+}
+.table-cell {
+  display: table-cell;
+  vertical-align: top;
+}
+label {
+  color: #EEE;
+  margin: 20px 0 5px;
+  height: 20px;
+  line-height: 20px;
+  display: inline-block;
+}
+.table-row:first-child label {
+  margin-top: 0;
+}
+/* Applying same to the keys */
+.cbutton {
+  box-sizing: border-box;
+  overflow: auto;
+  float: right;
+  cursor: pointer;
+  min-width: 40px;
+  background: #00b050;
+  border: 1px solid #00fd73;
+  color: #DDD;
+  line-height: 38px;
+  text-align: center;
+  transition: all 1s ease;
+  /* prevent selection of text inside keys */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Smoothing out hover and active states using css3 transitions */
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  height: 40px;
+}
+.cbutton:hover {
+  background: #40bf80;
+  color: white;
+}
+.cbutton:disabled {
+  background: #121e18;
+  color: #9d9d9d;
+  border-color: #9d9d9d;
+}
+.cbutton.midheight {
+  height: 20.5px;
+  line-height: 20px;
+  overflow: hidden;
+}
+.buttons-plus-minus-container {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+}
+.buttons-plus-minus-container .buttons-plus-minus,
+.buttons-plus-minus-container .button-padlock {
+  position: absolute;
+  top: 0;
+  height: 40px;
+  width: 40px;
+  transition: left 0.5s;
+}
+.buttons-plus-minus-container .buttons-plus-minus {
+  left: 100%;
+}
+.buttons-plus-minus-container .button-padlock {
+  left: 0;
+  background: #2c8454;
+  transition: all 0.5s;
+}
+.buttons-plus-minus-container.locked .button-padlock {
+  background: #00b050;
+}
+.buttons-plus-minus-container.increment .buttons-plus-minus {
+  left: 0;
+}
+.buttons-plus-minus-container.increment .button-padlock {
+  left: -100%;
+}
+.cvalue {
+  width: 100%;
+  height: 40px;
+  max-width: 100%;
+  padding: 0% 4% ;
+  background: #DDD;
+  /* Typography */
+  line-height: 40px;
+  color: black;
+  text-align: right;
+  box-shadow: 0 0 10px 2px transparent;
+  transition: 0.5s all;
+  outline: none;
+}
+.cvalue:focus,
+.cvalue:focus + div .unit {
+  background: #FFF;
+}
+.cvalue:invalid:not(:focus) {
+  color: #ff3333;
+}
+.cvalue.calculated {
+  box-shadow: 0 0 10px 2px #00b050;
+  color: #00b050;
+}
+.unit {
+  line-height: 40px;
+  height: 40px;
+  display: inline-block;
+  padding: 0 15px;
+  background: #DDD;
+  color: #333;
+  margin-right: -1px;
+  transition: 0.5s all;
+  margin-left: -1px;
+}
+.toggle {
+  position: relative;
+  display: table;
+  overflow: hidden;
+  background: #333;
+  cursor: pointer;
+}
+.toggle * {
+  cursor: inherit;
+}
+.toggle input {
+  display: none;
+}
+.toggle input ~ label:nth-child(2):after {
+  left: 0;
+}
+.toggle input ~ label:nth-child(3):after {
+  right: 100%;
+}
+.toggle input:checked ~ label:nth-child(2):after {
+  left: 100%;
+}
+.toggle input:checked ~ label:nth-child(3):after {
+  right: 0;
+}
+.toggle label {
+  position: relative;
+  display: table-cell;
+  text-align: center;
+  padding: 5px;
+  z-index: 1;
+  overflow: hidden;
+}
+.toggle label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: #00b050;
+  transition: 0.25s all;
+  z-index: -1;
+}
+.green-emphasis {
+  color: #00b050;
+}
+.nobreak {
+  white-space: nowrap;
+  display: inline-block;
+}
+.center-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.center-absolute {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+#noflex {
+  display: none;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+@supports not (display:flex) {
+  #noflex {
+    display: block;
+  }
+}
+#noflex * {
+  background: #262626;
+  max-width: 100%;
+}
+#noscript {
+  position: relative;
+}
+#noscript,
+#noflex {
+  width: 100%;
+  text-align: center;
+  flex: 0 0 0;
+  min-width: 100%;
+}
+.selected-text {
+  color: #fff;
+}
+.html-prototype {
+  display: none;
+}

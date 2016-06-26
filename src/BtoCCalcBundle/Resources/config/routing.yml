@@ -1,0 +1,12 @@
+homepage:
+    path:     /
+    defaults:
+        _controller: BtoCCalcBundle:Default:index
+
+about:
+    path:     /a-propos
+    defaults:
+        _controller:  FrameworkBundle:Template:template
+        template:     '@BtoCCalcBundle/Resources/views/Default/about.html.twig'
+        maxAge:       86400
+        sharedAge:    86400
